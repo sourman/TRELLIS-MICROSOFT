@@ -256,5 +256,8 @@ if [ "$SPCONV" = true ] ; then
 fi
 
 if [ "$DEMO" = true ] ; then
-    pip install gradio==4.44.1 gradio_litmodel3d==0.0.1
+    # Force install Gradio 5.34.2 with MCP support and override gradio-litmodel3d dependencies
+    pip install --no-cache-dir gradio[oauth,mcp]==5.34.2 "uvicorn>=0.14.0" spaces && \
+    pip install --no-deps gradio-litmodel3d==0.0.1 && \
+    pip install --force-reinstall gradio==5.34.2
 fi
