@@ -31,7 +31,7 @@ class Pipeline:
             config_file = f"{path}/pipeline.json"
         else:
             from huggingface_hub import hf_hub_download
-            config_file = hf_hub_download(path, "pipeline.json")
+            config_file = hf_hub_download(path, "pipeline.json", local_files_only=True)
 
         with open(config_file, 'r') as f:
             args = json.load(f)['args']
