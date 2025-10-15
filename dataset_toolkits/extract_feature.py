@@ -38,7 +38,7 @@ def get_data(frames, sha256):
             c2w[:3, 1:3] *= -1
             extrinsics = torch.inverse(c2w)
             fov = view['camera_angle_x']
-            intrinsics = utils3d.torch.intrinsics_from_fov(torch.tensor(fov), torch.tensor(fov))
+            intrinsics = utils3d.torch.intrinsics_from_fov_xy(torch.tensor(fov), torch.tensor(fov))
 
             return {
                 'image': image,

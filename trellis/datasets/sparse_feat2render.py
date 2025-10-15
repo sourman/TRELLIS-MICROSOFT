@@ -56,7 +56,7 @@ class SparseFeat2Render(StandardDatasetBase):
         view = np.random.randint(n_views)
         metadata = metadata['frames'][view]
         fov = metadata['camera_angle_x']
-        intrinsics = utils3d.torch.intrinsics_from_fov(torch.tensor(fov), torch.tensor(fov))
+        intrinsics = utils3d.torch.intrinsics_from_fov_xy(torch.tensor(fov), torch.tensor(fov))
         c2w = torch.tensor(metadata['transform_matrix'])
         c2w[:3, 1:3] *= -1
         extrinsics = torch.inverse(c2w)
